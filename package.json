@@ -1,6 +1,9 @@
 {
   "name": "zuerst",
   "version": "0.1.0",
+  "description": "A random playground",
+  "author": "Vandy Cheung",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "react": "^16.6.3",
