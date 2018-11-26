@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, withRouter } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
 import 'antd/dist/antd.css';
 
-import App from 'MainApp';
+import App from './MainApp';
+import getApolloClient from './apollo-client';
+import * as serviceWorker from './serviceWorker';
 
-import * as serviceWorker from 'serviceWorker';
+const AppWithRouter = withRouter(({ history }) => (
+  <ApolloProvider client={getApolloClient(history)}>
+    <App />
+  </ApolloProvider>
+));
 
 const Root = () => (
   <Router>
-    <App />
+    <AppWithRouter />
   </Router>
 );
 

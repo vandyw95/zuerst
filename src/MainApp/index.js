@@ -1,6 +1,17 @@
 import React from 'react';
-import Routes from 'Routes';
+import { withRouter } from 'react-router-dom';
 
-export default () => (
-  <Routes />
-);
+import AppHeader from './AppHeader';
+import AppContent from './AppContent';
+
+import { AppWrapper } from './style';
+
+export default withRouter(({ location }) => {
+  return (
+    <AppWrapper>
+      {location.pathname !== '/login' && <AppHeader />}
+
+      <AppContent />
+    </AppWrapper>
+  );
+});
