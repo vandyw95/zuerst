@@ -1,0 +1,81 @@
+{
+  "plugins": ["react"],
+  "extends": "react-app",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "ImportDeclaration": 1,
+        "VariableDeclarator": {
+          "var": 2,
+          "let": 2,
+          "const": 3
+        },
+        "MemberExpression": 1,
+        "FunctionDeclaration": {
+          "body": 1,
+          "parameters": 2
+        },
+        "FunctionExpression": {
+          "body": 1,
+          "parameters": 2
+        },
+        "CallExpression": {
+          "arguments": 1
+        },
+        "ArrayExpression": 1,
+        "ObjectExpression": 1
+      }
+    ],
+    "no-trailing-spaces": "error",
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/boolean-prop-naming": [
+      "error",
+      {
+        "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+"
+      }
+    ],
+    "react/jsx-first-prop-new-line": [1, "multiline"],
+    "react/jsx-boolean-value": [2, "never"],
+    "jsx-closing-bracket-location": [
+      1,
+      {
+        "selfClosing": ["tag-aligned", "line-aligned"],
+        "nonEmpty": "after-props"
+      }
+    ],
+    "react/jsx-closing-tag-location": 1,
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "maximum": 1,
+        "when": "multiline"
+      }
+    ],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-indent": [2, 2],
+    "react/jsx-sort-props": [
+      1,
+      {
+        "callbacksLast": 1,
+        "shorthandFirst": 1,
+        "ignoreCase": 1,
+        "reservedFirst": 1
+      }
+    ],
+    "react/jsx-sort-default-props": [
+      1,
+      {
+        "ignoreCase": 1
+      }
+    ],
+    "react/jsx-props-no-multi-spaces": 1
+  }
+}

@@ -8,15 +8,15 @@ import App from './MainApp';
 import getApolloClient from './apollo-client';
 import * as serviceWorker from './serviceWorker';
 
-const AppWithRouter = withRouter(({ history }) => (
-  <ApolloProvider client={getApolloClient(history)}>
+const WithRouter = withRouter(routerProps => (
+  <ApolloProvider client={getApolloClient(routerProps)}>
     <App />
   </ApolloProvider>
 ));
 
 const Root = () => (
   <Router>
-    <AppWithRouter />
+    <WithRouter />
   </Router>
 );
 
