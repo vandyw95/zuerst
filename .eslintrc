@@ -73,7 +73,7 @@
     "react/jsx-sort-default-props": [
       1,
       {
-        "ignoreCase": 1
+        "ignoreCase": true
       }
     ],
     "react/jsx-props-no-multi-spaces": 1
