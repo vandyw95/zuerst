@@ -11,12 +11,17 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 In the project directory, you can run:
 
 ### `npm start`
+
 ### `npm test`
+
 ### `npm run build`
+
 ### `npm run eject`
 
 ## Other Used Tech
 
-### `Apollo GraphQL`
-### `styled-components`
-### `Ant Design`
+#### Apollo GraphQL
+
+#### styled-components
+
+#### Ant Design
