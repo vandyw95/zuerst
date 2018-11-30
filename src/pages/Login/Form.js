@@ -45,9 +45,9 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
           rules: [{ required: true, message: 'Please input your email!' }],
         })(
           <UsernameInput
+            placeholder="Email"
             prefix={<InputIcon type="user" />}
             type="email"
-            placeholder="Email"
           />,
         )}
       </FormItem>
@@ -57,9 +57,9 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
           rules: [{ required: true, message: 'Please input your password!' }],
         })(
           <PasswordInput
+            placeholder="Password"
             prefix={<InputIcon type="lock" />}
             type="password"
-            placeholder="Password"
           />,
         )}
       </FormItem>

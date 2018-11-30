@@ -10,6 +10,7 @@ export default ({ location, history, graphQLErrors, networkError }) => {
         if (error.message.search('was not provided') > -1) {
           return error.message.split('"')[1].slice(1);
         }
+        return '';
       });
 
       AntdMessage.error(

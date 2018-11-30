@@ -44,7 +44,7 @@
     ],
     "react/jsx-first-prop-new-line": [1, "multiline"],
     "react/jsx-boolean-value": [2, "never"],
-    "jsx-closing-bracket-location": [
+    "react/jsx-closing-bracket-location": [
       1,
       {
         "selfClosing": ["tag-aligned", "line-aligned"],
@@ -76,6 +76,8 @@
         "ignoreCase": true
       }
     ],
-    "react/jsx-props-no-multi-spaces": 1
+    "react/jsx-props-no-multi-spaces": 1,
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
   }
 }
