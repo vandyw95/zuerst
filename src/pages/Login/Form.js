@@ -1,7 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import {
-  PageWrapper,
   Form,
   FormItem,
   InputIcon,
@@ -10,36 +10,65 @@ import {
   LoginButton,
 } from './style';
 
-const LoginForm = ({ form, loginUser }) => {
-  const { getFieldDecorator } = form;
-  const handleLogin = () => console.log('Login Success');
+function LoginForm({ form, doLogin, storeLoginData, history }) {
+  const { getFieldDecorator, getFieldsValue, validateFields } = form;
+
+  function handleLogin() {
+    validateFields(error => {
+      if (!error) {
+        const { email, password } = getFieldsValue();
+        doLogin({
+          variables: {
+            email,
+            password,
+          },
+        }).then(({ data }) => {
+          storeLoginData({
+            variables: {
+              email,
+              password,
+              token: data.login.token,
+            },
+          });
+          history.push('/home');
+        });
+      }
+
+      return null;
+    });
+  }
+
   return (
-    <PageWrapper>
-      <Form>
-        <FormItem>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(<UsernameInput prefix={<InputIcon type="user" />} placeholder="Username" />)}
-        </FormItem>
+    <Form>
+      <FormItem>
+        {getFieldDecorator('email', {
+          rules: [{ required: true, message: 'Please input your email!' }],
+        })(
+          <UsernameInput
+            placeholder="Email"
+            prefix={<InputIcon type="user" />}
+            type="email"
+          />,
+        )}
+      </FormItem>
 
-        <FormItem>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your password!' }],
-          })(
-            <PasswordInput
-              prefix={<InputIcon type="lock" />}
-              type="password"
-              placeholder="Password"
-            />,
-          )}
-        </FormItem>
+      <FormItem>
+        {getFieldDecorator('password', {
+          rules: [{ required: true, message: 'Please input your password!' }],
+        })(
+          <PasswordInput
+            placeholder="Password"
+            prefix={<InputIcon type="lock" />}
+            type="password"
+          />,
+        )}
+      </FormItem>
 
-        <LoginButton type="primary" onClick={handleLogin}>
-          {'Login'}
-        </LoginButton>
-      </Form>
-    </PageWrapper>
+      <LoginButton type="primary" onClick={() => handleLogin()}>
+        {'Login'}
+      </LoginButton>
+    </Form>
   );
-};
+}
 
-export default LoginForm;
+export default withRouter(LoginForm);
