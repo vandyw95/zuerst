@@ -64,10 +64,10 @@
     "react/jsx-sort-props": [
       1,
       {
-        "callbacksLast": 1,
-        "shorthandFirst": 1,
-        "ignoreCase": 1,
-        "reservedFirst": 1
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "ignoreCase": true,
+        "reservedFirst": true
       }
     ],
     "react/jsx-sort-default-props": [
