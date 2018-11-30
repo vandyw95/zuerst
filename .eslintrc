@@ -47,7 +47,7 @@
     "react/jsx-closing-bracket-location": [
       1,
       {
-        "selfClosing": ["tag-aligned"],
+        "selfClosing": "tag-aligned",
         "nonEmpty": "after-props"
       }
     ],
