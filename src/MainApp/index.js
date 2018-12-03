@@ -23,7 +23,12 @@ export default withRouter(({ location }) => {
       {({ data }) => {
         if (!data.loginData.token) {
           AntdMessage.warn('Please login', 2);
-          if (location.pathname !== '/login') return <Redirect push to="/login" />;
+          if (location.pathname !== '/login') {
+            return <Redirect
+              push
+              to="/login"
+            />;
+          }
         }
 
         return (

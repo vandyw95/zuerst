@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { message as AntdMessage } from 'antd';
 
 import {
   Form,
@@ -34,6 +35,7 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
         });
       }
 
+      AntdMessage.error('Login Error');
       return null;
     });
   }
@@ -64,7 +66,10 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
         )}
       </FormItem>
 
-      <LoginButton type="primary" onClick={() => handleLogin()}>
+      <LoginButton
+        type="primary"
+        onClick={() => handleLogin()}
+      >
         {'Login'}
       </LoginButton>
     </Form>

@@ -6,8 +6,20 @@ import Login from 'pages/Login';
 
 export default () => (
   <Switch>
-    <Redirect exact from="/" to="/home" />
-    <Route exact path="/login" component={Login} />
-    <Route exact path="/home" component={Home} />
+    <Redirect
+      exact
+      from="/"
+      to="/home"
+    />
+    <Route
+      exact
+      component={Login}
+      path="/login"
+    />
+    <Route
+      exact
+      component={Home}
+      path="/home"
+    />
   </Switch>
 );
