@@ -1,19 +1,10 @@
 import React from 'react';
-import { Mutation } from 'react-apollo';
-import { Form as AntdForm } from 'antd';
 import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
 
 import LoginForm from './Form';
 
 import { PageWrapper } from './style';
-
-const STORE_LOGIN_DATA = gql`
-  mutation Login($token: String!) {
-    saveLoginData(token: $token) {
-      token
-    }
-  }
-`;
 
 const DO_LOGIN = gql`
   mutation LoginUser($email: String!, $password: String!) {
@@ -23,28 +14,29 @@ const DO_LOGIN = gql`
   }
 `;
 
-function LoginContainer(props) {
+const STORE_LOGIN_DATA = gql`
+  mutation SaveLoginData($email: String!, $token: String!) {
+    saveLoginData(email: $email, token: $token) @client
+  }
+`;
+
+function LoginPage() {
   return (
     <PageWrapper>
       <Mutation mutation={DO_LOGIN}>
-        {doLogin => {
-          return (
-            <Mutation mutation={STORE_LOGIN_DATA}>
-              {storeLoginData => {
-                return (
-                  <LoginForm
-                    doLogin={doLogin}
-                    storeLoginData={storeLoginData}
-                    {...props}
-                  />
-                );
-              }}
-            </Mutation>
-          );
-        }}
+        {doLogin => (
+          <Mutation mutation={STORE_LOGIN_DATA}>
+            {storeLoginData => (
+              <LoginForm
+                doLogin={doLogin}
+                storeLoginData={storeLoginData}
+              />
+            )}
+          </Mutation>
+        )}
       </Mutation>
     </PageWrapper>
   );
 }
 
-export default AntdForm.create()(LoginContainer);
+export default LoginPage;

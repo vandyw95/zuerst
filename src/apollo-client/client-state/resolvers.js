@@ -1,8 +1,15 @@
 const resolvers = {
   Mutation: {
-    saveLoginData: (_, variables, b) => {
-      console.log({ _, variables, b });
-      return null;
+    saveLoginData: (_, { email, token }, { cache }) => {
+      const newLoginData = {
+        loginData: {
+          email,
+          token,
+          __typename: 'LoginData',
+        },
+      };
+      cache.writeData({ data: newLoginData });
+      return newLoginData;
     },
   },
 };

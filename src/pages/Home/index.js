@@ -1,7 +1,15 @@
 import React from 'react';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 
-import { HomePageWrapper } from './style';
+import ProductList from './ProductList';
 
-export default () => <HomePageWrapper>{'Hello World!'}</HomePageWrapper>;
+import { HomePageWrapper, ProductListWrapper } from './style';
+
+export default () => {
+  return (
+    <HomePageWrapper>
+      <ProductListWrapper>
+        <ProductList />
+      </ProductListWrapper>
+    </HomePageWrapper>
+  );
+};

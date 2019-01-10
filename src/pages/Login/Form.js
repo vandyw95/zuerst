@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Form as AntdForm, message as AntdMessage } from 'antd';
 
 import {
   Form,
@@ -14,27 +15,34 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
   const { getFieldDecorator, getFieldsValue, validateFields } = form;
 
   function handleLogin() {
-    validateFields(error => {
+    validateFields(async error => {
       if (!error) {
         const { email, password } = getFieldsValue();
-        doLogin({
+        const {
+          data: { login },
+        } = await doLogin({
           variables: {
             email,
             password,
           },
-        }).then(({ data }) => {
-          storeLoginData({
-            variables: {
-              email,
-              password,
-              token: data.login.token,
-            },
-          });
-          history.push('/home');
         });
+        const {
+          data: {
+            saveLoginData: { loginData },
+          },
+        } = await storeLoginData({
+          variables: {
+            email,
+            token: login.token,
+          },
+        });
+        if (loginData.token) {
+          AntdMessage.success('Logged In', 2);
+          history.push('/home');
+        } else {
+          AntdMessage.error('Login error, please try again!');
+        }
       }
-
-      return null;
     });
   }
 
@@ -64,11 +72,16 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
         )}
       </FormItem>
 
-      <LoginButton type="primary" onClick={() => handleLogin()}>
+      <LoginButton
+        type="primary"
+        onClick={() => {
+          handleLogin();
+        }}
+      >
         {'Login'}
       </LoginButton>
     </Form>
   );
 }
 
-export default withRouter(LoginForm);
+export default AntdForm.create()(withRouter(LoginForm));

@@ -1,11 +1,12 @@
 const typeDefs = `
   type LoginData {
+    email: String!
     token: String!
     __typename: String!
   }
 
   type Mutation {
-    saveLoginData(token: String!): LoginData
+    saveLoginData(email: String!, token: String!): LoginData
   }
 
   type Query {
