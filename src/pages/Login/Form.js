@@ -76,7 +76,8 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
         type="primary"
         onClick={() => {
           handleLogin();
-        }}>
+        }}
+      >
         {'Login'}
       </LoginButton>
     </Form>

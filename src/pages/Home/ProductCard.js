@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Card, CardMeta, Skeleton } from './style';
 
-function ProductCard({ loading, data }) {
+function ProductCard({ loading, data: { price, name } }) {
   return (
     <Card hoverable>
       <Skeleton
@@ -10,11 +10,14 @@ function ProductCard({ loading, data }) {
         avatar
         loading={loading}
         paragraph={{ rows: 2, width: [150, 50] }}
-        title={false}>
-        {!loading && <CardMeta
-          description={data.price}
-          title={data.name}
-        />}
+        title={false}
+      >
+        {!loading && (
+          <CardMeta
+            description={price}
+            title={name}
+          />
+        )}
       </Skeleton>
     </Card>
   );

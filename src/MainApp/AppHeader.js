@@ -14,15 +14,19 @@ export default withRouter(({ history }) => (
   <Header>
     <Menu
       defaultSelectedKeys={['home']}
-      mode="horizontal">
+      mode="horizontal"
+    >
       {MENU_LIST.map(({ id, path, icon, label }, index) => (
         <MenuItem
-          key={id}
           isVisibleOnDesktop={id !== 'more'}
           isVisibleOnMobile={index < 4}
-          onClick={() => history.push(path)}>
+          key={id}
+          onClick={() => history.push(path)}
+        >
           <MenuIcon type={icon} />
-          <MenuTitle>{label}</MenuTitle>
+          <MenuTitle>
+            {label}
+          </MenuTitle>
         </MenuItem>
       ))}
     </Menu>

@@ -25,13 +25,13 @@ function ProductList() {
 
         if (error) return null;
 
-        return itemsToRender.map(item => {
-          return <ProductCard
-            key={item.id}
+        return itemsToRender.map(item => (
+          <ProductCard
             data={item}
+            key={item.id}
             loading={loading}
-          />;
-        });
+          />
+        ));
       }}
     </Query>
   );
