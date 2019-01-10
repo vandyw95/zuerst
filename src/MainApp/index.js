@@ -21,7 +21,7 @@ class MainApp extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.state.isLoggedIn && nextProps.loginData.token) {
       this.setState({
         isLoggedIn: true,
