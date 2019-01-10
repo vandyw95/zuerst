@@ -2,12 +2,14 @@ import React from 'react';
 
 import ProductList from './ProductList';
 
-import { HomePageWrapper } from './style';
+import { HomePageWrapper, ProductListWrapper } from './style';
 
 export default () => {
   return (
     <HomePageWrapper>
-      <ProductList />
+      <ProductListWrapper>
+        <ProductList />
+      </ProductListWrapper>
     </HomePageWrapper>
   );
 };

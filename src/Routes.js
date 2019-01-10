@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Home from 'pages/Home';
-import Login from 'pages/Login';
+import Login from './pages/Login';
+import Home from './pages/Home';
 
-export default () => (
+export default props => (
   <Switch>
     <Redirect
       exact
@@ -13,12 +13,12 @@ export default () => (
     />
     <Route
       exact
-      component={Login}
+      component={() => <Login rootProps={props} />}
       path="/login"
     />
     <Route
       exact
-      component={Home}
+      component={() => <Home rootProps={props} />}
       path="/home"
     />
   </Switch>

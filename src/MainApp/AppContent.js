@@ -1,13 +1,11 @@
 import React from 'react';
 
-import Routes from 'Routes';
+import Routes from './../Routes';
 
-import {
-  Content,
-} from './style';
+import { Content } from './style';
 
-export default () => (
+export default props => (
   <Content>
-    <Routes />
+    <Routes {...props} />
   </Content>
 );
