@@ -42,45 +42,44 @@
         "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+"
       }
     ],
-    "react/jsx-first-prop-new-line": [1, "multiline-multiprop"],
-    "react/jsx-boolean-value": [2, "never"],
+    "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
+    "react/jsx-boolean-value": ["error", "never"],
     "react/jsx-closing-bracket-location": [
-      1,
+      "error",
       {
         "selfClosing": "line-aligned",
         "nonEmpty": "tag-aligned"
       }
     ],
-    "react/jsx-closing-tag-location": 1,
+    "react/jsx-closing-tag-location": "error",
     "react/jsx-max-props-per-line": [
-      1,
+      "error",
       {
         "maximum": 1,
         "when": "always"
       }
     ],
-    "react/jsx-indent-props": [2, 2],
-    "react/jsx-indent": [2, 2],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-indent": ["error", 2],
     "react/jsx-sort-props": [
-      1,
+      "error",
       {
-        "callbacksLast": true,
         "shorthandFirst": true,
-        "ignoreCase": true,
+        "callbacksLast": true,
+        "ignoreCase": false,
         "reservedFirst": false
       }
     ],
-    "react/jsx-no-duplicate-props": [1, { "ignoreCase": true }],
+    "react/jsx-no-duplicate-props": ["error", { "ignoreCase": true }],
     "react/jsx-sort-default-props": [
-      1,
+      "error",
       {
         "ignoreCase": true
       }
     ],
-    "react/jsx-props-no-multi-spaces": 1,
-    "react/jsx-one-expression-per-line": [1, { "allow": "literal" }],
+    "react/jsx-props-no-multi-spaces": "error",
     "react/jsx-wrap-multilines": [
-      1,
+      "error",
       {
         "declaration": "parens-new-line",
         "assignment": "parens-new-line",
@@ -91,6 +90,24 @@
         "prop": "parens-new-line"
       }
     ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": { "minProperties": 2, "multiline": true, "consistent": true },
+        "ObjectPattern": { "minProperties": 4, "multiline": true, "consistent": true },
+        "ImportDeclaration": {
+          "minProperties": 2,
+          "multiline": true,
+          "consistent": true
+        },
+        "ExportDeclaration": { "minProperties": 2, "multiline": true, "consistent": true }
+      }
+    ],
+    "multiline-ternary": ["error", "always-multiline"],
+    "max-statements-per-line": ["error", { "max": 1 }],
+    "implicit-arrow-linebreak": "error",
+    "react/jsx-one-expression-per-line": ["error", { "allow": "literal" }],
+    "react/jsx-no-literals": "error",
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": [
       "warn",

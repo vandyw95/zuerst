@@ -2,14 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form as AntdForm, message as AntdMessage } from 'antd';
 
-import {
-  Form,
-  FormItem,
-  InputIcon,
-  UsernameInput,
-  PasswordInput,
-  LoginButton,
-} from './style';
+import { Form, FormItem, InputIcon, UsernameInput, PasswordInput, LoginButton } from './style';
 
 function LoginForm({ form, doLogin, storeLoginData, history }) {
   const { getFieldDecorator, getFieldsValue, validateFields } = form;
@@ -51,13 +44,11 @@ function LoginForm({ form, doLogin, storeLoginData, history }) {
       <FormItem>
         {getFieldDecorator('email', {
           rules: [{ required: true, message: 'Please input your email!' }],
-        })(
-          <UsernameInput
-            placeholder="Email"
-            prefix={<InputIcon type="user" />}
-            type="email"
-          />,
-        )}
+        })(<UsernameInput
+          placeholder="Email"
+          prefix={<InputIcon type="user" />}
+          type="email"
+        />)}
       </FormItem>
 
       <FormItem>
